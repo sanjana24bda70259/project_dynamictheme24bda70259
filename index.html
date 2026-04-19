@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic Theme Engine</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Bebas+Neue&family=Nunito:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ───────── HEADER ───────── -->
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-icon">◈</span>
+      <span class="logo-text">ThemeForge</span>
+    </div>
+    <p class="tagline">Design your palette. Shape your world.</p>
+  </header>
+
+  <!-- ───────── MAIN LAYOUT ───────── -->
+  <main class="layout">
+
+    <!-- LEFT: CONTROLS PANEL -->
+    <aside class="panel controls-panel">
+      <h2 class="panel-title">⚙ Controls</h2>
+
+      <!-- COLOR SECTION -->
+      <section class="control-section">
+        <h3 class="section-label">Colors</h3>
+
+        <div class="control-row">
+          <label>Primary</label>
+          <div class="color-wrap">
+            <input type="color" id="colorPrimary" value="#6c63ff" />
+            <span class="hex-label" id="hexPrimary">#6c63ff</span>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <label>Accent</label>
+          <div class="color-wrap">
+            <input type="color" id="colorAccent" value="#ff6584" />
+            <span class="hex-label" id="hexAccent">#ff6584</span>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <label>Background</label>
+          <div class="color-wrap">
+            <input type="color" id="colorBg" value="#0f0f17" />
+            <span class="hex-label" id="hexBg">#0f0f17</span>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <label>Surface</label>
+          <div class="color-wrap">
+            <input type="color" id="colorSurface" value="#1a1a2e" />
+            <span class="hex-label" id="hexSurface">#1a1a2e</span>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <label>Text</label>
+          <div class="color-wrap">
+            <input type="color" id="colorText" value="#e8e8f0" />
+            <span class="hex-label" id="hexText">#e8e8f0</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- TYPOGRAPHY SECTION -->
+      <section class="control-section">
+        <h3 class="section-label">Typography</h3>
+
+        <div class="control-row vertical">
+          <label>Font Family</label>
+          <select id="fontFamily">
+            <option value="'Syne', sans-serif">Syne — Modern</option>
+            <option value="'DM Sans', sans-serif">DM Sans — Clean</option>
+            <option value="'Space Mono', monospace">Space Mono — Code</option>
+            <option value="'Cormorant Garamond', serif">Cormorant — Elegant</option>
+            <option value="'Bebas Neue', cursive">Bebas Neue — Bold</option>
+            <option value="'Nunito', sans-serif">Nunito — Friendly</option>
+            <option value="'Playfair Display', serif">Playfair — Editorial</option>
+          </select>
+        </div>
+
+        <div class="control-row vertical">
+          <label>Base Font Size: <span id="fontSizeVal">16px</span></label>
+          <input type="range" id="fontSize" min="12" max="24" value="16" />
+        </div>
+
+        <div class="control-row vertical">
+          <label>Line Height: <span id="lineHeightVal">1.6</span></label>
+          <input type="range" id="lineHeight" min="1" max="2.5" step="0.1" value="1.6" />
+        </div>
+
+        <div class="control-row vertical">
+          <label>Letter Spacing: <span id="letterSpacingVal">0px</span></label>
+          <input type="range" id="letterSpacing" min="-2" max="6" step="0.5" value="0" />
+        </div>
+      </section>
+
+      <!-- SPACING & RADIUS -->
+      <section class="control-section">
+        <h3 class="section-label">Shape & Space</h3>
+
+        <div class="control-row vertical">
+          <label>Border Radius: <span id="radiusVal">12px</span></label>
+          <input type="range" id="borderRadius" min="0" max="32" value="12" />
+        </div>
+
+        <div class="control-row vertical">
+          <label>Spacing Scale: <span id="spacingVal">1.0×</span></label>
+          <input type="range" id="spacing" min="0.5" max="2" step="0.1" value="1" />
+        </div>
+
+        <div class="control-row vertical">
+          <label>Shadow Depth: <span id="shadowVal">Medium</span></label>
+          <input type="range" id="shadow" min="0" max="3" step="1" value="1" />
+        </div>
+      </section>
+
+      <!-- PRESETS -->
+      <section class="control-section">
+        <h3 class="section-label">Quick Presets</h3>
+        <div class="presets-grid">
+          <button class="preset-btn" data-preset="midnight">🌑 Midnight</button>
+          <button class="preset-btn" data-preset="arctic">❄ Arctic</button>
+          <button class="preset-btn" data-preset="forest">🌿 Forest</button>
+          <button class="preset-btn" data-preset="sunset">🌅 Sunset</button>
+          <button class="preset-btn" data-preset="candy">🍬 Candy</button>
+          <button class="preset-btn" data-preset="monochrome">◐ Mono</button>
+        </div>
+      </section>
+
+      <!-- EXPORT ACTIONS -->
+      <section class="control-section">
+        <h3 class="section-label">Export</h3>
+        <div class="action-btns">
+          <button class="btn-export" id="exportJSON">⬇ Export JSON</button>
+          <button class="btn-export secondary" id="exportCSS">⬇ Export CSS</button>
+          <button class="btn-export secondary" id="copyCSS">⎘ Copy CSS Vars</button>
+          <button class="btn-reset" id="resetAll">↺ Reset</button>
+        </div>
+      </section>
+    </aside>
+
+    <!-- RIGHT: PREVIEW PANEL -->
+    <section class="panel preview-panel">
+      <h2 class="panel-title">👁 Live Preview</h2>
+
+      <div class="preview-canvas" id="previewCanvas">
+
+        <!-- CARD: HERO -->
+        <div class="preview-card hero-card">
+          <div class="badge">New Release</div>
+          <h1 class="preview-heading">Design Without Limits</h1>
+          <p class="preview-body">Your theme engine dynamically updates every element in real-time. Typography, colors, spacing — all in perfect harmony.</p>
+          <div class="btn-group">
+            <button class="preview-btn primary">Get Started</button>
+            <button class="preview-btn ghost">Learn More</button>
+          </div>
+        </div>
+
+        <!-- CARD: STATS -->
+        <div class="preview-row stats-row">
+          <div class="stat-card">
+            <span class="stat-num">2.4k</span>
+            <span class="stat-label">Themes Created</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">99%</span>
+            <span class="stat-label">Satisfaction</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">∞</span>
+            <span class="stat-label">Possibilities</span>
+          </div>
+        </div>
+
+        <!-- CARD: ARTICLE -->
+        <div class="preview-card article-card">
+          <div class="article-meta">Typography · 3 min read</div>
+          <h2 class="preview-subheading">The Art of Type</h2>
+          <p class="preview-body">Great typography is invisible — it simply feels right. Adjust the sliders to find the perfect balance between readability and character.</p>
+          <div class="tag-row">
+            <span class="tag">Design</span>
+            <span class="tag">CSS</span>
+            <span class="tag">UI</span>
+          </div>
+        </div>
+
+        <!-- CARD: FORM ELEMENTS -->
+        <div class="preview-card form-card">
+          <h3 class="preview-subheading">Interactive Elements</h3>
+          <div class="form-demo">
+            <div class="field">
+              <label class="field-label">Your Name</label>
+              <input class="field-input" type="text" placeholder="Jane Doe" />
+            </div>
+            <div class="field">
+              <label class="field-label">Email Address</label>
+              <input class="field-input" type="email" placeholder="hello@example.com" />
+            </div>
+            <button class="preview-btn primary full-width">Subscribe →</button>
+          </div>
+        </div>
+
+        <!-- CARD: ALERT STYLES -->
+        <div class="preview-card alerts-card">
+          <h3 class="preview-subheading">Status Messages</h3>
+          <div class="alert success">✓ Theme exported successfully!</div>
+          <div class="alert info">ℹ Your changes update in real-time.</div>
+          <div class="alert warning">⚠ Contrast ratio below recommended.</div>
+        </div>
+
+        <!-- PROGRESS / TOGGLES -->
+        <div class="preview-card misc-card">
+          <h3 class="preview-subheading">Progress & Toggles</h3>
+          <div class="progress-item">
+            <span>Usability</span>
+            <div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div>
+            <span>88%</span>
+          </div>
+          <div class="progress-item">
+            <span>Aesthetics</span>
+            <div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div>
+            <span>95%</span>
+          </div>
+          <div class="toggle-row">
+            <span>Dark Mode</span>
+            <div class="toggle active"></div>
+          </div>
+          <div class="toggle-row">
+            <span>Animations</span>
+            <div class="toggle"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/presets.js"></script>
+  <script src="js/engine.js"></script>
+</body>
+</html>
